@@ -2,15 +2,17 @@
   "name": "radix-site",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "scripts": {
+
+    "dev": "next",
+
     "start": "next start",
-    "prettier": "prettier --write .",
-    "scraper:setup": "docker run -it --name radix_algolia --env-file=./algolia/.env -e \"CONFIG=$(cat ./algolia/config.development.json | jq -r tostring)\" algolia/docsearch-scraper",
-    "scraper:reset": "docker rm radix_algolia && yarn scraper:setup",
-    "scraper:run": "docker start radix_algolia",
-    "scraper:production": "docker run -it --env-file=./algolia/.env -e \"CONFIG=$(cat ./algolia/config.json | jq -r tostring)\" algolia/docsearch-scraper"
+
+    "build": "next build ",
+
+    "lint": "next lint",
+
+    "schema": "turbo-gen ./public/schema.json"
   },
   "dependencies": {
     "@algolia/autocomplete-core": "^1.7.1",
@@ -93,9 +95,5 @@
     "pretty-quick": "^3.1.0",
     "typescript": "^4.2.4"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  }
+
 }
